@@ -56,3 +56,5 @@ call vam#ActivateAddons(['github:bling/vim-airline'])
 " colors
 set bg=dark
 colors hybrid
+
+let g:airline_powerline_fonts = 1

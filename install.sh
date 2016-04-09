@@ -23,3 +23,12 @@ if [[ ! -d "$VAM" ]]; then
 fi
 
 ln -f -s $DOTFILES_DIR/vimrc ~/.vimrc
+
+# powerline fonts
+FONTS_DIR=$HOME/.fonts/
+FONTCONFIG_DIR=$HOME/.config/fontconfig/conf.d
+
+curl -s -L -C - -o $FONTS_DIR/PowerlineSymbols.otf https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
+curl -s -L -C - -o $FONTCONFIG_DIR/10-powerline-symbols.conf https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+
+fc-cache -vf $FONTS_DIR
