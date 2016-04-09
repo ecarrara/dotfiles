@@ -11,3 +11,4 @@ if [ ! -d "$ZSH" ]; then
 fi
 
 ln -f -s $DOTFILES_DIR/zshrc ~/.zshrc
+ln -f -s $DOTFILES_DIR/psqlrc ~/.psqlrc
