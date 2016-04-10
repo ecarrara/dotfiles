@@ -58,3 +58,8 @@ set bg=dark
 colors hybrid
 
 let g:airline_powerline_fonts = 1
+
+
+" NERDTree mappings
+nnoremap <silent> <F9> :NERDTreeToggle <cr>
+inoremap <silent> <F9> <Esc>:NERDTreeToggle <cr>
