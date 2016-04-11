@@ -52,6 +52,7 @@ call vam#ActivateAddons(['github:SirVer/ultisnips'])
 call vam#ActivateAddons(['github:honza/vim-snippets'])
 call vam#ActivateAddons(['github:scrooloose/syntastic'])
 call vam#ActivateAddons(['github:bling/vim-airline'])
+call vam#ActivateAddons(['github:rust-lang/rust.vim'])
 
 " colors
 set bg=dark
