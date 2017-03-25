@@ -53,6 +53,11 @@ call vam#ActivateAddons(['github:honza/vim-snippets'])
 call vam#ActivateAddons(['github:scrooloose/syntastic'])
 call vam#ActivateAddons(['github:bling/vim-airline'])
 call vam#ActivateAddons(['github:rust-lang/rust.vim'])
+call vam#ActivateAddons(['github:albfan/nerdtree-git-plugin'])
+call vam#ActivateAddons(['github:mattn/emmet-vim'])
+call vam#ActivateAddons(['github:racer-rust/vim-racer'])
+call vam#ActivateAddons(['github:posva/vim-vue'])
+call vam#ActivateAddons(['github:vim-scripts/a.vim'])
 
 " colors
 set bg=dark
@@ -60,7 +65,27 @@ colors hybrid
 
 let g:airline_powerline_fonts = 1
 
+" Sytastic
+let g:syntastic_c_include_dirs = ['include', 'third_party/glad/include']
+
 
 " NERDTree mappings
 nnoremap <silent> <F9> :NERDTreeToggle <cr>
 inoremap <silent> <F9> <Esc>:NERDTreeToggle <cr>
+
+" CtrlP
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.?(git|hg|svn|venv|lib|vendor)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
+
+" NERDTree
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.egg_info$']
+
+autocmd Filetype json setlocal ts=2 sts=2 sw=2
+
+" Rust Racer
+let g:racer_experimental_completer = 1
+
+
+autocmd Filetype tex setlocal spell spelllang=pt
