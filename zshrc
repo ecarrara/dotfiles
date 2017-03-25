@@ -13,3 +13,6 @@ source /usr/bin/virtualenvwrapper.sh
 
 
 export _JAVA_OPTIONS="-Djava.net.preferIPv4Stack=true"
+
+# aliases
+alias grep=rg

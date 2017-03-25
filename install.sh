@@ -32,3 +32,5 @@ curl -s -L -C - -o $FONTS_DIR/PowerlineSymbols.otf https://github.com/powerline/
 curl -s -L -C - -o $FONTCONFIG_DIR/10-powerline-symbols.conf https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
 
 fc-cache -vf $FONTS_DIR
+
+pacman -S ripgrep
