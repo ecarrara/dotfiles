@@ -38,26 +38,26 @@ map <S-Tab> :tabprevious<CR>
 " highlight 80 column
 let &colorcolumn=join(range(80,81),",")
 
-" VIM Addons
-set runtimepath+=~/.vim/addons/vim-addon-manager
-
-call vam#ActivateAddons(['github:w0ng/vim-hybrid'])
-call vam#ActivateAddons(['github:oblitum/rainbow'])
-call vam#ActivateAddons(['github:kien/ctrlp.vim'])
-call vam#ActivateAddons(['github:scrooloose/nerdtree'])
-call vam#ActivateAddons(['github:majutsushi/tagbar'])
-call vam#ActivateAddons(['github:honza/vim-snippets'])
-call vam#ActivateAddons(['github:airblade/vim-gitgutter'])
-call vam#ActivateAddons(['github:SirVer/ultisnips'])
-call vam#ActivateAddons(['github:honza/vim-snippets'])
-call vam#ActivateAddons(['github:scrooloose/syntastic'])
-call vam#ActivateAddons(['github:bling/vim-airline'])
-call vam#ActivateAddons(['github:rust-lang/rust.vim'])
-call vam#ActivateAddons(['github:albfan/nerdtree-git-plugin'])
-call vam#ActivateAddons(['github:mattn/emmet-vim'])
-call vam#ActivateAddons(['github:racer-rust/vim-racer'])
-call vam#ActivateAddons(['github:posva/vim-vue'])
-call vam#ActivateAddons(['github:vim-scripts/a.vim'])
+" Plug!
+call plug#begin('~/.vim/plugged')
+Plug 'w0ng/vim-hybrid'
+Plug 'oblitum/rainbow'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'majutsushi/tagbar'
+Plug 'honza/vim-snippets'
+Plug 'airblade/vim-gitgutter'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'scrooloose/syntastic'
+Plug 'bling/vim-airline'
+Plug 'rust-lang/rust.vim'
+Plug 'albfan/nerdtree-git-plugin'
+Plug 'mattn/emmet-vim'
+Plug 'racer-rust/vim-racer'
+Plug 'posva/vim-vue'
+Plug 'vim-scripts/a.vim'
+call plug#end()
 
 " colors
 set bg=dark
