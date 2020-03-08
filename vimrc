@@ -32,11 +32,8 @@ filetype plugin indent on
 au FileType * set expandtab tabstop=4 shiftwidth=4 softtabstop=4
 
 " tab navigation
-map <C-Tab> :tabnext<CR>
-map <S-Tab> :tabprevious<CR>
+map <S-Tab> :tabnext<CR>
 
-" highlight 80 column
-let &colorcolumn=join(range(80,81),",")
 
 " Plug!
 call plug#begin('~/.vim/plugged')
