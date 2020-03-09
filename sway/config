@@ -15,11 +15,14 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term kitty
+
+set $uifont NotoMono
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run --fn $uifont -b "▶" --tf "$prompt" --hf "$highlight" --sf "$highlight" --scf "$highlight" | xargs swaymsg exec --
+set $menu bemenu-run --fn "$uifont" --prompt "▶" | xargs swaymsg exec --
 
 set $lock /home/ecarrara/.dotfiles/bin/lock-screen
 
