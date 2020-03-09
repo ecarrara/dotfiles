@@ -226,6 +226,18 @@ bar {
 input * xkb_layout "br"
 input * xkb_variant "abnt2"
 
+
+#
+# GTK Theme
+#
+
+set $gnome-schema org.gnome.desktop.interface
+
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Arc-Dark'
+    gsettings set $gnome-schema icon-theme 'Arc'
+}
+
 # Border and gaps
 default_border pixel
 gaps inner 5
