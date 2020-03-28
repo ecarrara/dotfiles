@@ -1,0 +1,11 @@
+{
+  "python.formatting.provider": "black",
+  "coc.preferences.formatOnSaveFiletypes": ["python", "rust"],
+  "languageserver": {
+    "rust": {
+      "command": "rust-analyzer",
+      "filetypes": ["rust"],
+      "rootPatterns": ["Cargo.toml"]
+    }
+  }
+}
