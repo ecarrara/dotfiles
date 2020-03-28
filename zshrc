@@ -74,6 +74,4 @@ source $ZSH/oh-my-zsh.sh
 
 export LANG=en_US.UTF-8
 
-export GDK_BACKEND=wayland
-
 export PATH=$PATH:$HOME/.dotfiles/bin:$HOME/.local/bin:$HOME/.cargo/bin
