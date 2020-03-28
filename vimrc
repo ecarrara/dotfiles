@@ -24,6 +24,8 @@ set noerrorbells               " no sound on errros
 set novisualbell               " no blink on errors
 set signcolumn=yes             " always show sign column
 set cmdheight=2                " give more space for displaying messages
+set relativenumber
+
 set shortmess+=c
 set list listchars=tab:»·,trail:·
 
