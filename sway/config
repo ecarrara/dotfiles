@@ -16,6 +16,8 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 
+set $browser chromium
+
 set $uifont NotoMono
 
 #
@@ -84,6 +86,8 @@ exec swayidle \
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+
+    bindsym $mod+shift+b exec $browser
 
     # Kill focused window
     bindsym $mod+Shift+q kill
