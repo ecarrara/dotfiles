@@ -44,7 +44,6 @@ map <S-Tab> :tabnext<CR>
 call plug#begin('~/.vim/plugged')
 Plug 'w0ng/vim-hybrid'
 Plug 'oblitum/rainbow'
-Plug 'kien/ctrlp.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'airblade/vim-gitgutter'
@@ -52,7 +51,8 @@ Plug 'dense-analysis/ale'
 Plug 'bling/vim-airline'
 Plug 'albfan/nerdtree-git-plugin'
 Plug 'mattn/emmet-vim'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'neoclide/coc.nvim'
 Plug 'posva/vim-vue'
@@ -78,11 +78,9 @@ let g:ale_fix_on_save = 1
 nnoremap <silent> <F9> :NERDTreeToggle <cr>
 inoremap <silent> <F9> <Esc>:NERDTreeToggle <cr>
 
-" CtrlP
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.?(git|hg|svn|venv|lib|vendor|target)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
+" FZF
+" use rg and skip .gitignore files
+nnoremap <silent> <c-p> :FZF<cr>
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '\.egg_info$']
