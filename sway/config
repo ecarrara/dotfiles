@@ -40,6 +40,17 @@ set $menu bemenu-run --fn "$uifont 12" --line-height 30 --ignorecase --prompt "â
 
 set $lock /home/ecarrara/.dotfiles/bin/lock-screen
 
+
+# Password menu
+set $passmenu ls $HOME/.password-store/*.gpg | xargs -L1 basename -s .gpg | \
+    bemenu --fn "$uifont 12" --line-height 30 --ignorecase --prompt "â–¶" \
+        --tb "$background" --tf "$color2" \
+        --fb "$background" --ff "$foreground" \
+        --nb "$background" --nf "$foreground" \
+        --hb "$background" --hf "$color2" \
+        --sb "$background" --sf "$color5" \
+    | xargs -L1 pass show | head -1 | xargs -L1 swaymsg exec -- wl-copy
+
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
@@ -94,6 +105,9 @@ exec swayidle \
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # Pass menu
+    bindsym $mod+Shift+p exec $passmenu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -256,6 +270,5 @@ exec_always {
 # Border and gaps
 default_border pixel
 gaps inner 5
-gaps outer 5
 
 include /etc/sway/config.d/*
