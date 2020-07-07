@@ -30,25 +30,14 @@ client.focused $color0 $background $foreground $color4 $background
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu bemenu-run --fn "$uifont 12" --line-height 30 --ignorecase --prompt "▶" \
-        --tb "$background" --tf "$color2" \
-        --fb "$background" --ff "$foreground" \
-        --nb "$background" --nf "$foreground" \
-        --hb "$background" --hf "$color2" \
-        --sb "$background" --sf "$color5" \
-        | xargs swaymsg exec --
+set $menu nwggrid -f
 
 set $lock /home/ecarrara/.dotfiles/bin/lock-screen
 
 
 # Password menu
 set $passmenu ls $HOME/.password-store/*.gpg | xargs -L1 basename -s .gpg | \
-    bemenu --fn "$uifont 12" --line-height 30 --ignorecase --prompt "▶" \
-        --tb "$background" --tf "$color2" \
-        --fb "$background" --ff "$foreground" \
-        --nb "$background" --nf "$foreground" \
-        --hb "$background" --hf "$color2" \
-        --sb "$background" --sf "$color5" \
+    nwgdmenu \
     | xargs -L1 pass show | head -1 | xargs -L1 swaymsg exec -- wl-copy
 
 ### Output configuration
@@ -269,6 +258,6 @@ exec_always {
 
 # Border and gaps
 default_border pixel
-gaps inner 5
+gaps inner 1
 
 include /etc/sway/config.d/*
