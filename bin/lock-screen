@@ -1,5 +1,2 @@
 #!/bin/bash
-grim /tmp/screen.png
-convert /tmp/screen.png -blur 0x6 /tmp/screen-blur.png
-swaylock -i /tmp/screen-blur.png
-
+swaylock --effect-pixelate 15 --effect-blur 2x2 --fade-in 0.3 -S

@@ -6,7 +6,6 @@
     "modules-center": ["sway/window"],
     "modules-right": [
         "tray",
-        "custom/spotify",
         "cpu",
         "memory",
         "backlight",
@@ -79,14 +78,6 @@
         },
         "scroll-step": 5,
         "on-click": "pavucontrol"
-    },
-    "custom/spotify": {
-        "interval": 1,
-        "return-type": "json",
-        "exec": "~/.config/waybar/modules/spotify.sh",
-        "exec-if": "pgrep spotify",
-        "on-click": "playerctl play-pause",
-        "escape": true
     },
     "backlight": {
         "format": "{icon}",

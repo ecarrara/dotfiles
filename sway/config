@@ -16,7 +16,7 @@ set $right l
 # Your preferred terminal emulator
 set $term kitty
 
-set $browser chromium
+set $browser google-chrome
 
 set $uifont NotoMono
 
@@ -30,15 +30,17 @@ client.focused $color0 $background $foreground $color4 $background
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 # set $menu dmenu_path | dmenu | xargs swaymsg exec --
-set $menu nwggrid -f
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
 set $lock /home/ecarrara/.dotfiles/bin/lock-screen
 
 
 # Password menu
-set $passmenu ls $HOME/.password-store/*.gpg | xargs -L1 basename -s .gpg | \
-    nwgdmenu \
-    | xargs -L1 pass show | head -1 | xargs -L1 swaymsg exec -- wl-copy
+set $passmenu find /home/ecarrara/.password-store -name '*.gpg' | cut -d '/' -f '5-' | sed s/.gpg$// | \
+    dmenu \
+    | xargs -L1 pass --clip # | head -1 | xargs -L1 swaymsg exec -- wl-copy
+
+set $screenshot grim -g "$(slurp)" - | wl-copy
 
 ### Output configuration
 #
@@ -52,15 +54,27 @@ output * bg $HOME/.config/wal.jpg fill
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
+output HDMI-A-1 resolution 2560x1080 position 1920,0
+# output HDMI-A-1 resolution 1920x1080 position 0,0
+output eDP-1 resolution 1920x1080 position 0,0
+
+# output HDMI-A-1 resolution 2560x1080 position 0,0
+# output eDP-1 resolution 1920x1080 position 320,1080
+
 ### Idle configuration
 #
 # Example configuration:
 #
-exec swayidle \
-          timeout 300 '$lock' \
-          timeout 600 'swaymsg "output * dpms off"' \
-               resume 'swaymsg "output * dpms on"' \
-          before-sleep '$lock'
+exec swayidle -w \
+          before-sleep 'swaymsg "output * dpms off"' \
+          after-resume 'swaymsg "output * dpms on"' \
+          lock '$lock'
+
+        #   timeout 120 '$lock' \
+        #   timeout 300 'swaymsg "output * dpms off"' \
+        #        resume 'swaymsg "output * dpms on"' \
+
+bindsym $mod+BackSpace exec loginctl lock-session
 
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -88,6 +102,11 @@ exec swayidle \
     bindsym $mod+Return exec $term
 
     bindsym $mod+shift+b exec $browser
+
+    # Screenshot
+    bindsym $mod+shift+s exec $screenshot
+
+    # bindsym $mod+shift+i exec $lock
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -241,9 +260,13 @@ bar {
     swaybar_command waybar
 }
 
+input * xkb_layout "us"
+input * xkb_variant "alt-intl"
+
+
 # Brazilian stuff
-input * xkb_layout "br"
-input * xkb_variant "abnt2"
+# input * xkb_layout "br"
+# input * xkb_variant "abnt2"
 
 #
 # GTK Theme
@@ -260,4 +283,10 @@ exec_always {
 default_border pixel
 gaps inner 1
 
-include /etc/sway/config.d/*
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK
+exec hash dbus-update-activation-environment 2>/dev/null && \
+     dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
+# include /etc/sway/config.d/*

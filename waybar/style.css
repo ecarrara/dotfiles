@@ -3,7 +3,7 @@
 * {
     border:        none;
     border-radius: 0;
-    font-family:   "Noto Sans", Roboto, Helvetica, Arial, sans-serif;
+    font-family:   "FiraCode", Roboto, Helvetica, Arial, sans-serif;
     font-size:     15px;
     box-shadow:    none;
     text-shadow:   none;
@@ -12,7 +12,7 @@
 
 window {
     color:      @foreground;
-    background: alpha(@background, 0.3);
+    background: alpha(@background, 0.8);
 }
 
 #workspaces {

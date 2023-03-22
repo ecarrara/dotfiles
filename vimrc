@@ -44,20 +44,22 @@ map <S-Tab> :tabnext<CR>
 call plug#begin('~/.vim/plugged')
 Plug 'w0ng/vim-hybrid'
 Plug 'oblitum/rainbow'
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree'
 Plug 'majutsushi/tagbar'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 Plug 'dense-analysis/ale'
 Plug 'bling/vim-airline'
-Plug 'albfan/nerdtree-git-plugin'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'mattn/emmet-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'neoclide/coc.nvim'
+Plug 'neoclide/coc.nvim', { 'tag': 'v0.0.81' }
 Plug 'posva/vim-vue'
 Plug 'vim-scripts/a.vim'
+Plug 'petobens/poet-v'
+Plug 'mgedmin/coverage-highlight.vim'
 call plug#end()
 
 " colors
@@ -98,6 +100,13 @@ inoremap <silent><expr> <TAB>
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+nmap <silent> [d :call CocAction('diagnosticNext')<cr>
+nmap <silent> ]d :call CocAction('diagnosticPrevious')<cr>
+
+nmap <silent> [t :NextUncovered<cr>
+nmap <silent> ]t :PrevUncovered<cr>
+
+
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
@@ -116,7 +125,7 @@ else
 endif
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gd :<C-u>call CocAction('jumpDefinition', 'tab drop')<CR>
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
@@ -140,3 +149,7 @@ nmap <leader>rn <Plug>(coc-rename)
 
 
 autocmd Filetype tex setlocal spell spelllang=pt
+
+let g:poetv_auto_activate = 0
+
+let g:coverage_script = "poetry run coverage"
